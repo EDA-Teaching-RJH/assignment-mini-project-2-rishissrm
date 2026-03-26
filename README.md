@@ -1,1 +1,11 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23284303)
+# Banking system
+
+class account:
+"""represents a single bank account"""
+ def __init__(self,account_number:str,owner:str,balanace:float =0.0):
+       self.account_number = account_number
+       self.owner = owner
+       self.balance=float(balance)
+       self.transactions:List[dict]=[]
+
+       
