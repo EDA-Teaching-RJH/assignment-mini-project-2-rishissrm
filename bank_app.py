@@ -127,5 +127,11 @@ class Bank:
         customer = self.find_customer(customer_id)
         customer.deposit(amount)
         self.record_transaction(customer_id,"Deposit",amount)
-        
+
+    #Withdraw money from a specific customer's account.
+    def withdraw_from_customer(self,customer_id,amount):
+        customer = self.find_customer(customer_id)
+        customer.withdraw(amount)
+        self.record_transaction(customer_id,"Withdrawal",amount)
+
 
