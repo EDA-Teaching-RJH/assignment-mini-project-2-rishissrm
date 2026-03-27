@@ -203,3 +203,22 @@ class Bank:
             for customer in self.customers:
                 writer.writerow(customer.to_list())
 
+# Load customer data from a CSV file.
+    def load_customers_from_csv(self, filename="customers.csv"):
+        if not os.path.exists(filename):
+            raise FileNotFoundError(f"{filename} not found.")
+
+        self.customers.clear()
+
+        with open(filename, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                customer = Customer(
+                    int(row["CustomerID"]),
+                    row["Name"],
+                    int(row["Age"]),
+                    row["Email"],
+                    row["Phone"],
+                    float(row["BalanceGBP"])
+                )
+                self.customers.append(customer)
