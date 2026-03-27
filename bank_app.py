@@ -6,12 +6,12 @@ import re
 from datetime import datetime 
 from typing import List 
 import requests
-from openpxl import workbook
+from openpyxl import workbook
 
 #banking system
 
 class person:
-    def__init__(self,name,age):
+    def __init__(self,name,age):
        self.name=name
        self.age=age
 
@@ -19,25 +19,25 @@ class person:
 #these belong to this specific student object
 
 class customer(person):
-    def__init__(self,customer_id,name,age,email,phone,balance=0.0):
-    super().__init__(name,age)
-    self.customer_id=customer_id
-    self.phone=phone
-    self.balance=balance
-    self.email=email
+    def __init__(self,customer_id,name,age,email,phone,balance=0.0):
+        super().__init__(name,age)
+        self.customer_id=customer_id
+        self.phone=phone
+        self.balance=balance
+        self.email=email
 
 
     def deposit(self,amount):
         if amount<=0:
-            raise valueError("deposit amount must be greater than 0.")
+            raise ValueError("deposit amount must be greater than 0.")
         self.balnce+= amount
 
         #withdrw money from the customers account
         def withdraw(self,amount):
             if amount <=0:
-                raise value Error("withdrawal amount must be greater than 0.")
+                raise ValueError("withdrawal amount must be greater than 0.")
             if amount > self.balance:
-                raise valueError("Insuffient funds.")
+                raise ValueError("Insuffient funds.")
             self.balance -=amount
 
     #coverting customer data into list to be saved in cvs
@@ -54,7 +54,7 @@ class customer(person):
 
         #transaction class stores one transaction record.
         class transaction:
-            def__init__(self,transaction_id,customer_id,transaction_type,amount,date):
+            def __init__(self,transaction_id,customer_id,transaction_type,amount,date):
                self.transaction_id=transaction_id
                self.customer_id=customer_id
                self.transaction_type=transaction_type
@@ -70,3 +70,15 @@ class customer(person):
                 self.date
             ]
 
+#Bank class is the main part of the program
+#It stores all the customers and their transations and performs all operations
+class Bank:
+    def __init__(self):
+        self.customers: List[Customer] = []
+        self.transations: List[Transactions] = []
+
+    #Check whether the name contrains only letters and spaces.
+    def is_valid_name(self,name):
+        pattern = r"^[A-Za-z ]{2,30}$"
+        
+    
