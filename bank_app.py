@@ -222,3 +222,11 @@ class Bank:
                     float(row["BalanceGBP"])
                 )
                 self.customers.append(customer)
+
+ # Save all transactions into a CSV file.
+    def save_transactions_to_csv(self, filename="transactions.csv"):
+        with open(filename, "w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow(["TransactionID", "CustomerID", "Type", "AmountGBP", "Date"])
+            for transaction in self.transactions:
+                writer.writerow(transaction.to_list())
