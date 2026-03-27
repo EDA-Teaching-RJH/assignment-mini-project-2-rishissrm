@@ -75,7 +75,7 @@ class Transaction:
 class Bank:
     def __init__(self):
         self.customers: List[Customer] = []
-        self.transactions: List[Transactions] = []
+        self.transactions: List[Transaction] = []
 
     #Check whether the name contrains only letters and spaces.
     def is_valid_name(self,name):
@@ -117,9 +117,9 @@ class Bank:
 
     #Save one transation into the transaction list.
     def record_transaction(self,customer_id,transaction_type,amount):
-        transaction_id =len(self.transations) +1
+        transaction_id =len(self.transactions) +1
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        transaction = transaction(transaction_id,customer_id,transaction_type,amount,date)
+        transaction = Transaction(transaction_id,customer_id,transaction_type,amount,date)
         self.transations.append(transaction)
 
     #Deposit money into a specific customer's account:

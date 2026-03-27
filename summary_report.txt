@@ -1,6 +1,6 @@
 BANK SUMMARY REPORT
 ===================================
-Number of customers: 2
+Number of customers: 1
 Number of transactions: 0
 Total transaction amount: GBP 0
 Average transaction: GBP 0
