@@ -145,6 +145,33 @@ class Bank:
         self.record_transaction(from_customer_id,"Transfer Out",amount)
         self.record_transaction(to_customer_id,"Transfer In",amount)
 
+    # Create sample customers and sample transactions automatically.
+    # This is useful for testing the program quickly.
+    def generate_sample_data(self, num_customers=5, num_transactions=10):
+        names = ["Alice", "Bob", "Charlie", "Diana", "Eva", "Farhan", "George", "Hana", "Imran", "Sophie"]
+
+        for i in range(num_customers):
+            name = random.choice(names)
+            age = random.randint(18, 60)
+            email = name.lower() + str(i + 1) + "@gmail.com"
+            phone = "07" + str(random.randint(100000000, 999999999))
+            balance = round(random.uniform(100, 5000), 2)
+            self.add_customer(name, age, email, phone, balance)
+
+        for _ in range(num_transactions):
+            customer = random.choice(self.customers)
+            action = random.choice(["deposit", "withdraw"])
+            amount = round(random.uniform(10, 400), 2)
+
+            try:
+                if action == "deposit":
+                    self.deposit_to_customer(customer.customer_id, amount)
+                else:
+                    self.withdraw_from_customer(customer.customer_id, amount)
+            except ValueError:
+                # Ignore invalid random withdrawals, for example if balance is too low.
+                pass
+
 
 
 
