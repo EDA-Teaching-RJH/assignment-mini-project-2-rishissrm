@@ -47,3 +47,19 @@ def test_transfer():
 
     assert c1.balance == 700
     assert c2.balance == 800
+
+#Transactions statistics
+def test_transaction_statistics():
+    bank = Bank()
+    customer = bank.add_customer("Maya", 20, "maya@gmail.com", "07123456789", 1000)
+
+    bank.deposit_to_customer(customer.customer_id, 100)
+    bank.deposit_to_customer(customer.customer_id, 200)
+    bank.withdraw_from_customer(customer.customer_id, 50)
+
+    stats = bank.transaction_statistics()
+
+    assert stats["count"] == 3
+    assert stats["total"] == 350
+    assert stats["max"] == 200
+    assert stats["min"] == 50
