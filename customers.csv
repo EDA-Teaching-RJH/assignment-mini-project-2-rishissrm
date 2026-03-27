@@ -1,6 +1,8 @@
 CustomerID,Name,Age,Email,Phone,BalanceGBP
-1,George,57,george1@gmail.com,07758978407,3127.93
-2,Bob,43,bob2@gmail.com,07319656041,1646.7
-3,Sophie,35,sophie3@gmail.com,07191995790,4381.15
-4,George,21,george4@gmail.com,07549533571,3339.12
-5,Farhan,31,farhan5@gmail.com,07122164591,906.1
+1,piko,20,piko@gmail.com,1234567890,244.85
+2,lolo,36,lolo@gmail.com,0987654321,105.27
+3,Bob,26,bob1@gmail.com,07761186031,1665.22
+4,Sophie,49,sophie2@gmail.com,07352894442,4759.9
+5,Charlie,30,charlie3@gmail.com,07620684782,4399.97
+6,Diana,55,diana4@gmail.com,07558635725,5000.21
+7,Farhan,21,farhan5@gmail.com,07870288758,2213.26
