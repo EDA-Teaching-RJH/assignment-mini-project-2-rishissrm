@@ -134,4 +134,18 @@ class Bank:
         customer.withdraw(amount)
         self.record_transaction(customer_id,"Withdrawal",amount)
 
+    #Transfer money from one customer to another.
+    def transfer(self,from_customer_id,to_customer_id,amount):
+        sender = self.find_customer(from_customer_id)
+        receiver = self.find_customer(to_customer_id)
+
+        sender.withdraw(amount)
+        receiver.deposit(amount)
+
+        self.record_transaction(from_customer_id,"Transfer Out",amount)
+        self.record_transaction(to_customer_id,"Transfer In",amount)
+
+
+
+
 
