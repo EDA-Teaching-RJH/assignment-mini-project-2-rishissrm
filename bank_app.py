@@ -172,7 +172,28 @@ class Bank:
                 # Ignore invalid random withdrawals, for example if balance is too low.
                 pass
 
+# Calculate useful transaction statistics.
+    def transaction_statistics(self):
+        amounts = [t.amount for t in self.transactions]
 
+        if not amounts:
+            return {
+                "count": 0,
+                "total": 0,
+                "mean": 0,
+                "median": 0,
+                "max": 0,
+                "min": 0
+            }
+
+        return {
+            "count": len(amounts),
+            "total": round(sum(amounts), 2),
+            "mean": round(statistics.mean(amounts), 2),
+            "median": round(statistics.median(amounts), 2),
+            "max": round(max(amounts), 2),
+            "min": round(min(amounts), 2)
+        }
 
 
 
