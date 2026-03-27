@@ -9,7 +9,7 @@ def test_add_customer():
     assert customer.name == "Rowan"
     assert customer.age == 20
     assert customer.balance == 1000
-    assert len(bank.customer) == 1
+    assert len(bank.customers) == 1
 
 #Testing deposit funtion
 def test_deposit():

@@ -37,7 +37,7 @@ class Customer(person):
         if amount <=0:
             raise ValueError("withdrawal amount must be greater than 0.")
         if amount > self.balance:
-            raise ValueError("Insuffient funds.")
+            raise ValueError("Insufficient funds.")
         self.balance -=amount
 
     #coverting customer data into list to be saved in cvs
@@ -71,7 +71,7 @@ class Transaction:
             ]
 
 #Bank class is the main part of the program
-#It stores all the customers and their transations and performs all operations
+#It stores all the customers and their transactions and performs all operations
 class Bank:
     def __init__(self):
         self.customers: List[Customer] = []
@@ -120,7 +120,7 @@ class Bank:
         transaction_id =len(self.transactions) +1
         date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         transaction = Transaction(transaction_id,customer_id,transaction_type,amount,date)
-        self.transations.append(transaction)
+        self.transactions.append(transaction)
 
     #Deposit money into a specific customer's account:
     def deposit_to_customer(self,customer_id,amount):
