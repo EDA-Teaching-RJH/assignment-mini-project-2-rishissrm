@@ -114,3 +114,11 @@ class Bank:
             if customer.customer_id == customer_id:
                 return customer
         raise ValueError("Customer not found.")
+
+    #Save one transation into the transaction list.
+    def record_transaction(self,customer_id,transaction_type,amount):
+        transaction_id =len(self.transations) +1
+        date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        transaction = transaction(transaction_id,customer_id,transaction_type,amount,date)
+        self.transations.append(transaction)
+
