@@ -393,3 +393,13 @@ class Bank:
                 print("Error:", error)
             except Exception as error:
                 print("Something went wrong:", error)
+
+# Main function starts the whole program.
+def main():
+    bank = Bank()
+    bank.menu()
+
+
+# This makes sure the program runs only when this file is executed directly.
+if __name__ == "__main__":
+    main()
