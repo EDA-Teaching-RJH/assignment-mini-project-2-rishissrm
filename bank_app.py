@@ -307,3 +307,89 @@ class Bank:
                 return f"{holiday['title']} on {holiday['date']}"
 
         return "No upcoming bank holiday found."
+
+
+ # Display the menu and allow the user to choose options.
+    def menu(self):
+        while True:
+            print("\n--- BANK MENU ---")
+            print("1. Add customer")
+            print("2. Deposit money")
+            print("3. Withdraw money")
+            print("4. Transfer money")
+            print("5. Show statistics")
+            print("6. Generate sample data")
+            print("7. Save data to CSV/TXT")
+            print("8. Export report to Excel")
+            print("9. Show next UK bank holiday")
+            print("10. Exit")
+
+            choice = input("Enter your choice: ")
+
+            try:
+                if choice == "1":
+                    name = input("Enter customer name: ")
+                    age = int(input("Enter age: "))
+                    email = input("Enter email: ")
+                    phone = input("Enter phone number: ")
+                    balance = float(input("Enter opening balance in GBP: "))
+                    customer = self.add_customer(name, age, email, phone, balance)
+                    print("Customer added with ID", customer.customer_id)
+
+                elif choice == "2":
+                    customer_id = int(input("Enter customer ID: "))
+                    amount = float(input("Enter deposit amount in GBP: "))
+                    self.deposit_to_customer(customer_id, amount)
+                    print("Deposit successful.")
+
+                elif choice == "3":
+                    customer_id = int(input("Enter customer ID: "))
+                    amount = float(input("Enter withdrawal amount in GBP: "))
+                    self.withdraw_from_customer(customer_id, amount)
+                    print("Withdrawal successful.")
+
+                elif choice == "4":
+                    from_id = int(input("Transfer from customer ID: "))
+                    to_id = int(input("Transfer to customer ID: "))
+                    amount = float(input("Enter amount in GBP: "))
+                    self.transfer(from_id, to_id, amount)
+                    print("Transfer successful.")
+
+                elif choice == "5":
+                    stats = self.transaction_statistics()
+                    print("\nTransaction Statistics")
+                    print("Count:", stats["count"])
+                    print("Total: GBP", stats["total"])
+                    print("Mean: GBP", stats["mean"])
+                    print("Median: GBP", stats["median"])
+                    print("Max: GBP", stats["max"])
+                    print("Min: GBP", stats["min"])
+
+                elif choice == "6":
+                    self.generate_sample_data()
+                    print("Sample data generated.")
+
+                elif choice == "7":
+                    self.save_customers_to_csv()
+                    self.save_transactions_to_csv()
+                    self.save_summary_to_txt()
+                    print("Files saved.")
+
+                elif choice == "8":
+                    self.export_to_excel()
+                    print("Excel report saved as bank_report.xlsx")
+
+                elif choice == "9":
+                    print("Next UK bank holiday:", self.get_next_bank_holiday())
+
+                elif choice == "10":
+                    print("Exiting program.")
+                    break
+
+                else:
+                    print("Invalid choice. Please try again.")
+
+            except ValueError as error:
+                print("Error:", error)
+            except Exception as error:
+                print("Something went wrong:", error)
