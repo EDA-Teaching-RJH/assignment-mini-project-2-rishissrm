@@ -19,3 +19,12 @@ def test_deposit():
     bank.deposit_to_customer(customer.customer_id, 200)
 
     assert customer.balance == 700
+
+#Testing withdrawal function
+def test_withdraw():
+    bank = Bank()
+    customer = bank.add_customer("Riya", 22, "riya@gmail.com", "07123456789", 500)
+
+    bank.withdraw_from_customer(customer.customer_id, 100)
+
+    assert customer.balance == 400
