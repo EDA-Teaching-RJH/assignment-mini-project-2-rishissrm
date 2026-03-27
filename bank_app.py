@@ -264,3 +264,29 @@ class Bank:
             file.write(f"Median transaction: GBP {stats['median']}\n")
             file.write(f"Maximum transaction: GBP {stats['max']}\n")
             file.write(f"Minimum transaction: GBP {stats['min']}\n")
+
+# Export customers, transactions, and summary to an Excel file.
+    def export_to_excel(self, filename="bank_report.xlsx"):
+        workbook = Workbook()
+
+        # First worksheet for customer details.
+        ws1 = workbook.active
+        ws1.title = "Customers"
+        ws1.append(["CustomerID", "Name", "Age", "Email", "Phone", "BalanceGBP"])
+        for customer in self.customers:
+            ws1.append(customer.to_list())
+
+        # Second worksheet for transaction details.
+        ws2 = workbook.create_sheet(title="Transactions")
+        ws2.append(["TransactionID", "CustomerID", "Type", "AmountGBP", "Date"])
+        for transaction in self.transactions:
+            ws2.append(transaction.to_list())
+
+        # Third worksheet for summary statistics.
+        ws3 = workbook.create_sheet(title="Summary")
+        stats = self.transaction_statistics()
+        ws3.append(["Metric", "Value"])
+        for key, value in stats.items():
+            ws3.append([key, value])
+
+        workbook.save(filename)
