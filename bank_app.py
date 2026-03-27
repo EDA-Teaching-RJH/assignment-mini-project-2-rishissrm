@@ -92,3 +92,19 @@ class Bank:
         pattern = r"^[0-9]{10,11}$"
         return bool(re.match(pattern,phone))
 
+    #Add a new customer after validating the input.
+    def add_customer(self,name,age,email,phone,opening_balance=0.0):
+        if not self.is_valid_name(name):
+            raise ValueError("Invalid name, Use Letters and spaces only.")
+        
+        if not self.is_valid_email(email):
+            raise ValueError("Invalid email format.")
+        
+        if not self.is_valid_phone(phone):
+            raise ValueError("Invalid phone number. Use 10 or 11 digits.")
+
+        customer_id = len(self.customer) +1
+        customer = Customer(customer_id,name, age,email,phone,opening_balance)
+        self.customers.append(customer)
+        return Customer
+
