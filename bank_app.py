@@ -195,5 +195,11 @@ class Bank:
             "min": round(min(amounts), 2)
         }
 
-
+# Save all customers into a CSV file.
+    def save_customers_to_csv(self, filename="customers.csv"):
+        with open(filename, "w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow(["CustomerID", "Name", "Age", "Email", "Phone", "BalanceGBP"])
+            for customer in self.customers:
+                writer.writerow(customer.to_list())
 
