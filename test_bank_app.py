@@ -36,3 +36,14 @@ def test_withdraw_insufficient_funds():
 
     with pytest.raises(ValueError, match="Insufficient funds."):
         bank.withdraw_from_customer(customer.customer_id, 500)
+
+#Test transfer
+def test_transfer():
+    bank = Bank()
+    c1 = bank.add_customer("Alice", 20, "alice@gmail.com", "07123456789", 1000)
+    c2 = bank.add_customer("Bob", 21, "bob@gmail.com", "07987654321", 500)
+
+    bank.transfer(c1.customer_id, c2.customer_id, 300)
+
+    assert c1.balance == 700
+    assert c2.balance == 800
