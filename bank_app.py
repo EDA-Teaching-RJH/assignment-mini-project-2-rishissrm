@@ -122,3 +122,10 @@ class Bank:
         transaction = transaction(transaction_id,customer_id,transaction_type,amount,date)
         self.transations.append(transaction)
 
+    #Deposit money into a specific customer's account:
+    def deposit_to_customer(self,customer_id,amount):
+        customer = self.find_customer(customer_id)
+        customer.deposit(amount)
+        self.record_transaction(customer_id,"Deposit",amount)
+        
+
