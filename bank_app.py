@@ -290,3 +290,20 @@ class Bank:
             ws3.append([key, value])
 
         workbook.save(filename)
+
+# Use an API to get the next UK bank holiday.
+    def get_next_bank_holiday(self):
+        url = "https://www.gov.uk/bank-holidays.json"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+
+        holidays = data["england-and-wales"]["events"]
+        today = datetime.now().date()
+
+        for holiday in holidays:
+            holiday_date = datetime.strptime(holiday["date"], "%Y-%m-%d").date()
+            if holiday_date >= today:
+                return f"{holiday['title']} on {holiday['date']}"
+
+        return "No upcoming bank holiday found."
