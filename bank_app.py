@@ -249,3 +249,18 @@ class Bank:
                     row["Date"]
                 )
                 self.transactions.append(transaction)
+
+# Save a simple summary report to a TXT file.
+    def save_summary_to_txt(self, filename="summary_report.txt"):
+        stats = self.transaction_statistics()
+
+        with open(filename, "w", encoding="utf-8") as file:
+            file.write("BANK SUMMARY REPORT\n")
+            file.write("=" * 35 + "\n")
+            file.write(f"Number of customers: {len(self.customers)}\n")
+            file.write(f"Number of transactions: {stats['count']}\n")
+            file.write(f"Total transaction amount: GBP {stats['total']}\n")
+            file.write(f"Average transaction: GBP {stats['mean']}\n")
+            file.write(f"Median transaction: GBP {stats['median']}\n")
+            file.write(f"Maximum transaction: GBP {stats['max']}\n")
+            file.write(f"Minimum transaction: GBP {stats['min']}\n")
