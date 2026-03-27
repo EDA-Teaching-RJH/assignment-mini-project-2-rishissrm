@@ -17,15 +17,27 @@ class person:
 
 #customer input for the data collection
 #these belong to this specific student object
+
 class customer(person):
     def__init__(self,customer_id,name,age,email,phone,balance=0.0):
     super().__init__(name,age)
     self.customer_id=customer_id
     self.phone=phone
     self.balance=balance
+    self.email=email
 
 
     def deposit(self,amount):
         if amount<=0:
             raise valueError("deposit amount must be greater than 0.")
         self.balnce+= amount
+
+        #withdrw money from the customers account
+        def withdraw(self,amount):
+            if amount <=0:
+                raise value Error("withdrawal amount must be greater than 0.")
+            if amount > self.balance:
+                raise valueError("Insuffient funds.")
+                
+
+
