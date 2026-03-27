@@ -87,4 +87,8 @@ class Bank:
         pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$"
         return bool(re.match(pattern,email))
 
+    #Check whether the phone number has 10 or 11 digits.
+    def is_valid_phone(self,phone):
+        pattern = r"^[0-9]{10,11}$"
+        return bool(re.match(pattern,phone))
 
