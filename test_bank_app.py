@@ -63,3 +63,33 @@ def test_transaction_statistics():
     assert stats["total"] == 350
     assert stats["max"] == 200
     assert stats["min"] == 50
+
+#Validating customer data
+def test_valid_name():
+    bank = Bank()
+    assert bank.is_valid_name("Rowan Atkinson") is True
+
+
+def test_invalid_name():
+    bank = Bank()
+    assert bank.is_valid_name("Rowan123") is False
+
+
+def test_valid_email():
+    bank = Bank()
+    assert bank.is_valid_email("student@test.com") is True
+
+
+def test_invalid_email():
+    bank = Bank()
+    assert bank.is_valid_email("student.com") is False
+
+
+def test_valid_phone():
+    bank = Bank()
+    assert bank.is_valid_phone("07123456789") is True
+
+
+def test_invalid_phone():
+    bank = Bank()
+    assert bank.is_valid_phone("07ABC123") is False
