@@ -80,5 +80,11 @@ class Bank:
     #Check whether the name contrains only letters and spaces.
     def is_valid_name(self,name):
         pattern = r"^[A-Za-z ]{2,30}$"
-        
+        return bool(re.match(pattern,name))
     
+    #Check whether the email is in a valid format
+    def is_valid_email(self,email):
+        pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$"
+        return bool(re.match(pattern,email))
+
+
