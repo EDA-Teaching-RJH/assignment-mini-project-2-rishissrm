@@ -60,5 +60,13 @@ class customer(person):
                self.transaction_type=transaction_type
                self.amount=amount
                self.date=date
-
+#Convert transaction data into a list for CSV or excel
+        def to_list(self):
+            return [
+                self.transaction_id,
+                self.customer_id,
+                self.transaction_type,
+                round(self.amount,2),
+                self.date
+            ]
 
