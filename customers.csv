@@ -1,2 +1,6 @@
 CustomerID,Name,Age,Email,Phone,BalanceGBP
-1,ik,20,ik@gmail.com,1234567890,40.0
+1,George,57,george1@gmail.com,07758978407,3127.93
+2,Bob,43,bob2@gmail.com,07319656041,1646.7
+3,Sophie,35,sophie3@gmail.com,07191995790,4381.15
+4,George,21,george4@gmail.com,07549533571,3339.12
+5,Farhan,31,farhan5@gmail.com,07122164591,906.1
