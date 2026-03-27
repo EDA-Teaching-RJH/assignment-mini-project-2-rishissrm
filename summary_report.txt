@@ -1,0 +1,9 @@
+BANK SUMMARY REPORT
+===================================
+Number of customers: 2
+Number of transactions: 0
+Total transaction amount: GBP 0
+Average transaction: GBP 0
+Median transaction: GBP 0
+Maximum transaction: GBP 0
+Minimum transaction: GBP 0

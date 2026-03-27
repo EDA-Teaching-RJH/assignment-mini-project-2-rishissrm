@@ -6,7 +6,7 @@ import re
 from datetime import datetime 
 from typing import List 
 import requests
-from openpyxl import workbook
+from openpyxl import Workbook
 
 #banking system
 
@@ -18,7 +18,7 @@ class person:
 #customer input for the data collection
 #these belong to this specific student object
 
-class customer(person):
+class Customer(person):
     def __init__(self,customer_id,name,age,email,phone,balance=0.0):
         super().__init__(name,age)
         self.customer_id=customer_id
@@ -30,15 +30,15 @@ class customer(person):
     def deposit(self,amount):
         if amount<=0:
             raise ValueError("deposit amount must be greater than 0.")
-        self.balnce+= amount
+        self.balance+= amount
 
         #withdrw money from the customers account
-        def withdraw(self,amount):
-            if amount <=0:
-                raise ValueError("withdrawal amount must be greater than 0.")
-            if amount > self.balance:
-                raise ValueError("Insuffient funds.")
-            self.balance -=amount
+    def withdraw(self,amount):
+        if amount <=0:
+            raise ValueError("withdrawal amount must be greater than 0.")
+        if amount > self.balance:
+            raise ValueError("Insuffient funds.")
+        self.balance -=amount
 
     #coverting customer data into list to be saved in cvs
     def to_list(self):
@@ -52,14 +52,14 @@ class customer(person):
         ]
 
 
-        #transaction class stores one transaction record.
-        class transaction:
-            def __init__(self,transaction_id,customer_id,transaction_type,amount,date):
-               self.transaction_id=transaction_id
-               self.customer_id=customer_id
-               self.transaction_type=transaction_type
-               self.amount=amount
-               self.date=date
+#transaction class stores one transaction record.
+class Transaction:
+        def __init__(self,transaction_id,customer_id,transaction_type,amount,date):
+            self.transaction_id=transaction_id
+            self.customer_id=customer_id
+            self.transaction_type=transaction_type
+            self.amount=amount
+            self.date=date
 #Convert transaction data into a list for CSV or excel
         def to_list(self):
             return [
@@ -75,7 +75,7 @@ class customer(person):
 class Bank:
     def __init__(self):
         self.customers: List[Customer] = []
-        self.transations: List[Transactions] = []
+        self.transactions: List[Transactions] = []
 
     #Check whether the name contrains only letters and spaces.
     def is_valid_name(self,name):
@@ -103,14 +103,14 @@ class Bank:
         if not self.is_valid_phone(phone):
             raise ValueError("Invalid phone number. Use 10 or 11 digits.")
 
-        customer_id = len(self.customer) +1
+        customer_id = len(self.customers) +1
         customer = Customer(customer_id,name, age,email,phone,opening_balance)
         self.customers.append(customer)
-        return Customer
+        return customer
 
     #Find a customer by their customer ID.
     def find_customer(self,customer_id):
-        for customer in sef.customers:
+        for customer in self.customers:
             if customer.customer_id == customer_id:
                 return customer
         raise ValueError("Customer not found.")
