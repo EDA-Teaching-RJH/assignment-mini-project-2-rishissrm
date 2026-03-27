@@ -108,3 +108,9 @@ class Bank:
         self.customers.append(customer)
         return Customer
 
+    #Find a customer by their customer ID.
+    def find_customer(self,customer_id):
+        for customer in sef.customers:
+            if customer.customer_id == customer_id:
+                return customer
+        raise ValueError("Customer not found.")
