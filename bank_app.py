@@ -230,3 +230,22 @@ class Bank:
             writer.writerow(["TransactionID", "CustomerID", "Type", "AmountGBP", "Date"])
             for transaction in self.transactions:
                 writer.writerow(transaction.to_list())
+
+# Load transactions from a CSV file.
+    def load_transactions_from_csv(self, filename="transactions.csv"):
+        if not os.path.exists(filename):
+            raise FileNotFoundError(f"{filename} not found.")
+
+        self.transactions.clear()
+
+        with open(filename, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                transaction = Transaction(
+                    int(row["TransactionID"]),
+                    int(row["CustomerID"]),
+                    row["Type"],
+                    float(row["AmountGBP"]),
+                    row["Date"]
+                )
+                self.transactions.append(transaction)
